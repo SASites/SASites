@@ -52,20 +52,21 @@
         }
 
         /* Header & Navigation */
-        header {
-            background-color: white;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+      header {
+    background-color: var(--dark);  /* Changed from white */
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
+.nav-links a {
+    text-decoration: none;
+    color: var(--light);  /* Changed from var(--dark) */
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
 
         .logo {
             display: flex;
