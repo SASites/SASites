@@ -256,6 +256,15 @@
         }
 
         /* Importance Section */
+        .importance-card,
+.feature-card,
+.pricing-card {
+    background-color: var(--dark-lighter);  /* Add this variable: #1a1a1a */
+    /* Rest of the styles remain the same */
+}
+
+/* Add this new variable at the top with others */
+/* In :root section add: --dark-lighter: #1a1a1a; */
         .importance-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
