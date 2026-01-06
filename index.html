@@ -295,44 +295,37 @@
         }
 
         /* Why Choose Us */
-        .why-us {
-    background-color: var(--dark-light);  /* Add this variable: #121212 */
+       .why-us {
+    background-color: var(--dark-light); /* #1a1a1a */
 }
 
-/* Add this variable at the top: --dark-light: #121212; */
-        .why-us {
-            background-color: #f8f9fa;
-        }
+.feature-card {
+    background-color: var(--dark-lighter); /* #222222 */
+    padding: 30px;
+    border-radius: var(--rounded);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid var(--gray-light); /* Add border */
+}
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
+.feature-card:hover {
+    border-left: 5px solid var(--primary);
+    transform: translateY(-5px);
+}
 
-        .feature-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: var(--rounded);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
+.feature-card h3 {
+    color: var(--light); /* Brighter headings */
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+}
 
-        .feature-card:hover {
-            border-left: 5px solid var(--primary);
-        }
-
-        .feature-card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .feature-icon {
-            color: var(--accent);
-        }
+.feature-card p {
+    color: var(--gray); /* #b0b0b0 - much brighter */
+    line-height: 1.7;
+}
 
         /* Pricing Section */
         .pricing-grid {
