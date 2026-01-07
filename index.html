@@ -625,6 +625,103 @@ section {
     margin: 0 auto;
     padding: 0 20px;
 }
+    .payment-options {
+    padding: 20px;
+}
+
+.payment-option {
+    margin-bottom: 25px;
+    padding: 25px;
+    background: var(--dark-lighter);
+    border-radius: var(--rounded);
+    border: 2px solid var(--gray-light);
+    transition: var(--transition);
+}
+
+.payment-option:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.payment-option.management-option {
+    border-color: var(--accent);
+    background: rgba(255, 190, 11, 0.05);
+}
+
+.option-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.option-header h4 {
+    color: var(--light);
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.option-price {
+    color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.highlight {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.option-desc {
+    color: var(--gray);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.payment-instructions {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.payment-instructions p {
+    color: var(--light);
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.payment-instructions strong {
+    color: var(--accent);
+}
+
+.note {
+    color: var(--accent);
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Make PayPal buttons consistent */
+.paypal-container {
+    margin: 10px auto;
+    width: 100%;
+    max-width: 250px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+/* Style subscription buttons differently */
+#paypal-basic-management,
+#paypal-standard-management,
+#paypal-premium-management {
+    margin: 10px auto;
+    width: 100%;
+    max-width: 250px;
+}
     <!-- HTML Structure -->
     <header>
         <div class="container">
