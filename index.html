@@ -737,70 +737,166 @@ section {
                 </div>
                 <div class="pricing-grid">
                     <!-- Basic Plan -->
-                    <div class="pricing-card">
-                        <div class="security-badge">Security Included</div>
-                        <div class="pricing-header">
-                            <h3>Basic</h3>
-                            <div class="pricing-price">ZAR 499</div>
-                            <div class="pricing-period">one-time payment</div>
-                        </div>
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> 3-Page Website</li>
-                            <li><i class="fas fa-check"></i> Mobile Responsive Design</li>
-                            <li><i class="fas fa-check"></i> Basic SEO Setup</li>
-                            <li><i class="fas fa-check"></i> Contact Form</li>
-                            <li><i class="fas fa-check"></i> SSL Certificate</li>
-                            <li><i class="fas fa-check"></i> 5-Day Delivery</li>
-                        </ul>
-                        <div class="paypal-container" id="paypal-container-2NV2WB2BQ7R4G"></div>
-                        <p class="management-note">Optional R50/month management plan available</p>
-                    </div>
-
-                    <!-- Standard Plan -->
-                    <div class="pricing-card">
-                        <div class="security-badge">Security Included</div>
-                        <div class="pricing-header" style="background-color: var(--primary-dark);">
-                            <h3>Standard</h3>
-                            <div class="pricing-price">ZAR 899</div>
-                            <div class="pricing-period">one-time payment</div>
-                        </div>
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> 5-Page Website</li>
-                            <li><i class="fas fa-check"></i> Mobile Responsive Design</li>
-                            <li><i class="fas fa-check"></i> Advanced SEO Setup</li>
-                            <li><i class="fas fa-check"></i> Contact Form + Newsletter</li>
-                            <li><i class="fas fa-check"></i> SSL Certificate</li>
-                            <li><i class="fas fa-check"></i> Basic Analytics</li>
-                            <li><i class="fas fa-check"></i> 5-Day Delivery</li>
-                        </ul>
-                        <div class="paypal-container" id="paypal-container-3MWQBUAM4GWLE"></div>
-                        <p class="management-note">Optional R50/month management plan available</p>
-                    </div>
-
-                    <!-- Premium Plan -->
-                    <div class="pricing-card">
-                        <div class="security-badge">Security Included</div>
-                        <div class="pricing-header" style="background-color: var(--secondary);">
-                            <h3>Premium</h3>
-                            <div class="pricing-price">ZAR 1,399</div>
-                            <div class="pricing-period">one-time payment</div>
-                        </div>
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> 8-Page Website</li>
-                            <li><i class="fas fa-check"></i> Mobile Responsive Design</li>
-                            <li><i class="fas fa-check"></i> Comprehensive SEO Setup</li>
-                            <li><i class="fas fa-check"></i> Advanced Contact Forms</li>
-                            <li><i class="fas fa-check"></i> SSL Certificate</li>
-                            <li><i class="fas fa-check"></i> Advanced Analytics</li>
-                            <li><i class="fas fa-check"></i> Speed Optimization</li>
-                            <li><i class="fas fa-check"></i> 5-Day Delivery</li>
-                        </ul>
-                        <div class="paypal-container" id="paypal-container-NJKHLE722DQ4J"></div>
-                        <p class="management-note">Optional R50/month management plan available</p>
-                    </div>
-                </div>
+                  <!-- BASIC PLAN CARD -->
+<div class="pricing-card">
+    <div class="security-badge">Security Included</div>
+    <div class="pricing-header">
+        <h3>Basic</h3>
+        <div class="pricing-price">ZAR 499</div>
+        <div class="pricing-period">+ optional monthly management</div>
+    </div>
+    
+    <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> 3-Page Website</li>
+        <li><i class="fas fa-check"></i> Mobile Responsive Design</li>
+        <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+        <li><i class="fas fa-check"></i> Contact Form</li>
+        <li><i class="fas fa-check"></i> SSL Certificate</li>
+        <li><i class="fas fa-check"></i> 5-Day Delivery</li>
+    </ul>
+    
+    <!-- TWO PAYMENT OPTIONS -->
+    <div class="payment-options">
+        <!-- Option 1: WITHOUT Management -->
+        <div class="payment-option">
+            <div class="option-header">
+                <h4>One-Time Payment</h4>
+                <p class="option-price">ZAR 499 once</p>
             </div>
-        </section>
+            <p class="option-desc">No monthly fees - you manage everything</p>
+            <!-- Your existing one-time button -->
+            <div class="paypal-container" id="paypal-basic-onetime"></div>
+        </div>
+        
+        <!-- Option 2: WITH Management -->
+        <div class="payment-option management-option">
+            <div class="option-header">
+                <h4>With Monthly Management</h4>
+                <p class="option-price">ZAR 499 + <span class="highlight">R50/month</span></p>
+            </div>
+            <p class="option-desc">We handle updates, security, and maintenance</p>
+            
+            <div class="payment-instructions">
+                <p><strong>Step 1:</strong> Pay for website (one-time)</p>
+                <div class="paypal-container" id="paypal-basic-website"></div>
+                
+                <p><strong>Step 2:</strong> Subscribe to management (monthly)</p>
+                <div id="paypal-basic-management"></div>
+            </div>
+            
+            <p class="note"><i class="fas fa-info-circle"></i> Both payments required for managed service</p>
+        </div>
+    </div>
+</div>
+
+<!-- Repeat for Standard and Premium plans with their respective IDs -->
+
+<!-- STANDARD PLAN CARD -->
+<div class="pricing-card">
+    <div class="security-badge">Security Included</div>
+    <div class="pricing-header" style="background-color: var(--primary-dark);">
+        <h3>Standard</h3>
+        <div class="pricing-price">ZAR 899</div>
+        <div class="pricing-period">+ optional monthly management</div>
+    </div>
+    
+    <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> 5-Page Website</li>
+        <li><i class="fas fa-check"></i> Mobile Responsive Design</li>
+        <li><i class="fas fa-check"></i> Advanced SEO Setup</li>
+        <li><i class="fas fa-check"></i> Contact Form + Newsletter</li>
+        <li><i class="fas fa-check"></i> SSL Certificate</li>
+        <li><i class="fas fa-check"></i> Basic Analytics</li>
+        <li><i class="fas fa-check"></i> 5-Day Delivery</li>
+    </ul>
+    
+    <!-- TWO PAYMENT OPTIONS -->
+    <div class="payment-options">
+        <!-- Option 1: WITHOUT Management -->
+        <div class="payment-option">
+            <div class="option-header">
+                <h4>One-Time Payment</h4>
+                <p class="option-price">ZAR 899 once</p>
+            </div>
+            <p class="option-desc">No monthly fees - you manage everything</p>
+            <!-- One-time payment button -->
+            <div class="paypal-container" id="paypal-standard-onetime"></div>
+        </div>
+        
+        <!-- Option 2: WITH Management -->
+        <div class="payment-option management-option">
+            <div class="option-header">
+                <h4>With Monthly Management</h4>
+                <p class="option-price">ZAR 899 + <span class="highlight">R50/month</span></p>
+            </div>
+            <p class="option-desc">We handle updates, security, and maintenance</p>
+            
+            <div class="payment-instructions">
+                <p><strong>Step 1:</strong> Pay for website (one-time)</p>
+                <div class="paypal-container" id="paypal-standard-website"></div>
+                
+                <p><strong>Step 2:</strong> Subscribe to management (monthly)</p>
+                <div id="paypal-standard-management"></div>
+            </div>
+            
+            <p class="note"><i class="fas fa-info-circle"></i> Both payments required for managed service</p>
+        </div>
+    </div>
+</div>
+
+<!-- PREMIUM PLAN CARD -->
+<div class="pricing-card">
+    <div class="security-badge">Security Included</div>
+    <div class="pricing-header" style="background-color: var(--secondary);">
+        <h3>Premium</h3>
+        <div class="pricing-price">ZAR 1,399</div>
+        <div class="pricing-period">+ optional monthly management</div>
+    </div>
+    
+    <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> 8-Page Website</li>
+        <li><i class="fas fa-check"></i> Mobile Responsive Design</li>
+        <li><i class="fas fa-check"></i> Comprehensive SEO Setup</li>
+        <li><i class="fas fa-check"></i> Advanced Contact Forms</li>
+        <li><i class="fas fa-check"></i> SSL Certificate</li>
+        <li><i class="fas fa-check"></i> Advanced Analytics</li>
+        <li><i class="fas fa-check"></i> Speed Optimization</li>
+        <li><i class="fas fa-check"></i> 5-Day Delivery</li>
+    </ul>
+    
+    <!-- TWO PAYMENT OPTIONS -->
+    <div class="payment-options">
+        <!-- Option 1: WITHOUT Management -->
+        <div class="payment-option">
+            <div class="option-header">
+                <h4>One-Time Payment</h4>
+                <p class="option-price">ZAR 1,399 once</p>
+            </div>
+            <p class="option-desc">No monthly fees - you manage everything</p>
+            <!-- One-time payment button -->
+            <div class="paypal-container" id="paypal-premium-onetime"></div>
+        </div>
+        
+        <!-- Option 2: WITH Management -->
+        <div class="payment-option management-option">
+            <div class="option-header">
+                <h4>With Monthly Management</h4>
+                <p class="option-price">ZAR 1,399 + <span class="highlight">R50/month</span></p>
+            </div>
+            <p class="option-desc">We handle updates, security, and maintenance</p>
+            
+            <div class="payment-instructions">
+                <p><strong>Step 1:</strong> Pay for website (one-time)</p>
+                <div class="paypal-container" id="paypal-premium-website"></div>
+                
+                <p><strong>Step 2:</strong> Subscribe to management (monthly)</p>
+                <div id="paypal-premium-management"></div>
+            </div>
+            
+            <p class="note"><i class="fas fa-info-circle"></i> Both payments required for managed service</p>
+        </div>
+    </div>
+</div>
 
         <!-- About Section -->
         <section id="about">
