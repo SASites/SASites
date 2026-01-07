@@ -1083,5 +1083,136 @@ section {
         window.addEventListener('load', animateOnScroll);
         window.addEventListener('scroll', animateOnScroll);
     </script>
+      // Load PayPal SDK once
+function loadPayPalSDK() {
+    if (typeof paypal === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://www.paypal.com/sdk/js?client-id=AT33xIQg-z-5H7T9HVrrn0qc2Wc9e6pt8A1qHIkeRI1frPAV6mZhXj2YXGvGvvEsrgCxpLYPOlA9TtXT&components=buttons,hosted-buttons&currency=ZAR';
+        script.onload = initializeAllPayPalButtons;
+        document.head.appendChild(script);
+    } else {
+        initializeAllPayPalButtons();
+    }
+}
+
+function initializeAllPayPalButtons() {
+    // Initialize ONE-TIME payment buttons for all plans
+    if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
+        // BASIC PLAN
+        paypal.HostedButtons({
+            hostedButtonId: "2NV2WB2BQ7R4G",
+        }).render("#paypal-basic-onetime");
+        
+        paypal.HostedButtons({
+            hostedButtonId: "2NV2WB2BQ7R4G",
+        }).render("#paypal-basic-website");
+        
+        // STANDARD PLAN
+        paypal.HostedButtons({
+            hostedButtonId: "3MWQBUAM4GWLE",
+        }).render("#paypal-standard-onetime");
+        
+        paypal.HostedButtons({
+            hostedButtonId: "3MWQBUAM4GWLE",
+        }).render("#paypal-standard-website");
+        
+        // PREMIUM PLAN
+        paypal.HostedButtons({
+            hostedButtonId: "NJKHLE722DQ4J",
+        }).render("#paypal-premium-onetime");
+        
+        paypal.HostedButtons({
+            hostedButtonId: "NJKHLE722DQ4J",
+        }).render("#paypal-premium-website");
+    }
+    
+    // Initialize SUBSCRIPTION buttons for management
+    if (typeof paypal !== 'undefined' && paypal.Buttons) {
+        // Your existing subscription plan IDs (after modifying to R50)
+        const managementPlans = {
+            basic: 'P-2G695548CC5795927NFPNMGY',
+            standard: 'P-93W186862R5318804NFPNZMI',
+            premium: 'P-19145634H0848144BNFPN2TQ'
+        };
+        
+        // Basic Plan Management Subscription
+        if (document.getElementById('paypal-basic-management')) {
+            paypal.Buttons({
+                style: {
+                    shape: 'pill',
+                    color: 'gold',
+                    layout: 'vertical',
+                    label: 'subscribe'
+                },
+                createSubscription: function(data, actions) {
+                    return actions.subscription.create({
+                        plan_id: managementPlans.basic
+                    });
+                },
+                onApprove: function(data, actions) {
+                    showSuccessMessage('Basic');
+                }
+            }).render('#paypal-basic-management');
+        }
+        
+        // Standard Plan Management Subscription
+        if (document.getElementById('paypal-standard-management')) {
+            paypal.Buttons({
+                style: {
+                    shape: 'pill',
+                    color: 'gold',
+                    layout: 'vertical',
+                    label: 'subscribe'
+                },
+                createSubscription: function(data, actions) {
+                    return actions.subscription.create({
+                        plan_id: managementPlans.standard
+                    });
+                },
+                onApprove: function(data, actions) {
+                    showSuccessMessage('Standard');
+                }
+            }).render('#paypal-standard-management');
+        }
+        
+        // Premium Plan Management Subscription
+        if (document.getElementById('paypal-premium-management')) {
+            paypal.Buttons({
+                style: {
+                    shape: 'pill',
+                    color: 'gold',
+                    layout: 'vertical',
+                    label: 'subscribe'
+                },
+                createSubscription: function(data, actions) {
+                    return actions.subscription.create({
+                        plan_id: managementPlans.premium
+                    });
+                },
+                onApprove: function(data, actions) {
+                    showSuccessMessage('Premium');
+                }
+            }).render('#paypal-premium-management');
+        }
+    }
+}
+
+function showSuccessMessage(plan) {
+    const message = `Thank you! Your ${plan} plan management subscription is active.\n\nIMPORTANT: Please also complete the one-time website payment above.\n\nWe'll contact you within 24 hours to start your project!`;
+    alert(message);
+}
+
+// Load PayPal when pricing section is visible
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            loadPayPalSDK();
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+const pricingSection = document.getElementById('pricing');
+if (pricingSection) observer.observe(pricingSection);
 </body>
 </html>
