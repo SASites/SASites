@@ -590,6 +590,41 @@
     </style>
 </head>
 <body>
+    /* Better text contrast fixes */
+.section-title h2 {
+    color: var(--light); /* Brighter headings */
+}
+
+.section-title p {
+    color: var(--gray); /* Brighter subtitle */
+}
+
+.about-text p {
+    color: var(--gray); /* Fix about section text */
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* Make PayPal buttons stand out */
+.paypal-container {
+    margin: 20px auto;
+    width: 200px;
+    border-radius: var(--rounded);
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Improve section spacing */
+section {
+    padding: 80px 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
     <!-- HTML Structure -->
     <header>
         <div class="container">
