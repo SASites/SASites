@@ -721,6 +721,143 @@ section {
     width: 100%;
     max-width: 250px;
 }
+    /* ===== FIX OVERLAPPING ELEMENTS ===== */
+
+/* Fix pricing card overlap on mobile */
+@media (max-width: 768px) {
+    .pricing-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px !important;
+    }
+    
+    .pricing-card {
+        margin-bottom: 30px;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Ensure cards don't overlap */
+    .importance-card,
+    .feature-card {
+        margin-bottom: 25px;
+        width: 100% !important;
+    }
+    
+    /* Fix grid layout on mobile */
+    .importance-grid,
+    .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 25px !important;
+    }
+    
+    /* Fix payment options on mobile */
+    .payment-options {
+        padding: 15px !important;
+    }
+    
+    .payment-option {
+        margin-bottom: 20px !important;
+        padding: 20px 15px !important;
+    }
+    
+    /* Fix PayPal button containers */
+    .paypal-container {
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 10px auto !important;
+    }
+}
+
+/* Fix for very small screens */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px !important;
+    }
+    
+    section {
+        padding: 50px 0 !important;
+    }
+    
+    .hero {
+        padding: 70px 0 !important;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .section-title h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    /* Fix animation container overlap */
+    .animation-container {
+        display: none; /* Hide on very small screens if causing issues */
+    }
+}
+
+/* Fix security badge overlap */
+.security-badge {
+    position: absolute;
+    top: 20px;
+    right: -35px; /* Push it further out */
+    z-index: 10;
+    pointer-events: none; /* Prevent interaction issues */
+}
+
+@media (max-width: 768px) {
+    .security-badge {
+        right: -40px; /* Even further on mobile */
+        font-size: 0.8rem !important;
+        padding: 6px 25px !important;
+    }
+}
+
+/* Fix card hover effects causing overlap */
+.importance-card:hover,
+.feature-card:hover,
+.pricing-card:hover {
+    position: relative;
+    z-index: 5;
+}
+
+/* Ensure proper stacking context */
+.pricing-grid {
+    position: relative;
+    z-index: 1;
+}
+
+/* Fix footer overlap */
+footer {
+    position: relative;
+    z-index: 2;
+}
+
+/* Fix navigation menu overlap on mobile */
+@media (max-width: 768px) {
+    .nav-links.active {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    .nav-links li {
+        padding: 10px 0;
+    }
+}
+
+/* Fix commercial animation overlap */
+.commercial-animation {
+    z-index: 0 !important;
+    opacity: 0.3; /* Make them more subtle */
+}
+
+/* Ensure text doesn't overlap with animations */
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
     <!-- HTML Structure -->
     <header>
         <div class="container">
@@ -1310,5 +1447,177 @@ const observer = new IntersectionObserver((entries) => {
 
 const pricingSection = document.getElementById('pricing');
 if (pricingSection) observer.observe(pricingSection);
+                        <!-- ========== SINGLE PAYPAL SDK LOAD ========== -->
+    <script>
+        // Function to load PayPal SDK only once
+        function loadPayPalSDK() {
+            if (typeof paypal === 'undefined') {
+                const script = document.createElement('script');
+                // Load BOTH hosted-buttons and subscription buttons
+                script.src = 'https://www.paypal.com/sdk/js?client-id=AT33xIQg-z-5H7T9HVrrn0qc2Wc9e6pt8A1qHIkeRI1frPAV6mZhXj2YXGvGvvEsrgCxpLYPOlA9TtXT&components=buttons,hosted-buttons&currency=ZAR&disable-funding=venmo';
+                document.head.appendChild(script);
+                
+                // Wait for SDK to load, then initialize buttons
+                script.onload = function() {
+                    // Give it a small delay to ensure SDK is ready
+                    setTimeout(initializeAllPayPalButtons, 500);
+                };
+            } else {
+                initializeAllPayPalButtons();
+            }
+        }
+        
+        // Function to initialize ALL PayPal buttons
+        function initializeAllPayPalButtons() {
+            console.log('Initializing PayPal buttons...');
+            
+            // Initialize ONE-TIME payment buttons (HostedButtons)
+            if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
+                try {
+                    // BASIC PLAN
+                    if (document.getElementById('paypal-basic-onetime')) {
+                        paypal.HostedButtons({
+                            hostedButtonId: "2NV2WB2BQ7R4G",
+                        }).render("#paypal-basic-onetime");
+                    }
+                    
+                    if (document.getElementById('paypal-basic-website')) {
+                        paypal.HostedButtons({
+                            hostedButtonId: "2NV2WB2BQ7R4G",
+                        }).render("#paypal-basic-website");
+                    }
+                    
+                    // STANDARD PLAN
+                    if (document.getElementById('paypal-standard-onetime')) {
+                        paypal.HostedButtons({
+                            hostedButtonId: "3MWQBUAM4GWLE",
+                        }).render("#paypal-standard-onetime");
+                    }
+                    
+                    if (document.getElementById('paypal-standard-website')) {
+                        paypal.HostedButtons({
+                            hostedButtonId: "3MWQBUAM4GWLE",
+                        }).render("#paypal-standard-website");
+                    }
+                    
+                    // PREMIUM PLAN
+                    if (document.getElementById('paypal-premium-onetime')) {
+                        paypal.HostedButtons({
+                            hostedButtonId: "NJKHLE722DQ4J",
+                        }).render("#paypal-premium-onetime");
+                    }
+                    
+                    if (document.getElementById('paypal-premium-website')) {
+                        paypal.HostedButtons({
+                            hostedButtonId: "NJKHLE722DQ4J",
+                        }).render("#paypal-premium-website");
+                    }
+                    
+                    console.log('Hosted buttons initialized successfully');
+                } catch (error) {
+                    console.error('Error initializing hosted buttons:', error);
+                }
+            }
+            
+            // Initialize SUBSCRIPTION buttons for management
+            if (typeof paypal !== 'undefined' && paypal.Buttons) {
+                try {
+                    // Management subscription plan IDs
+                    const managementPlans = {
+                        basic: 'P-2G695548CC5795927NFPNMGY',
+                        standard: 'P-93W186862R5318804NFPNZMI',
+                        premium: 'P-19145634H0848144BNFPN2TQ'
+                    };
+                    
+                    // Basic Plan Management Subscription
+                    if (document.getElementById('paypal-basic-management')) {
+                        paypal.Buttons({
+                            style: {
+                                shape: 'pill',
+                                color: 'gold',
+                                layout: 'vertical',
+                                label: 'subscribe'
+                            },
+                            createSubscription: function(data, actions) {
+                                return actions.subscription.create({
+                                    plan_id: managementPlans.basic
+                                });
+                            },
+                            onApprove: function(data, actions) {
+                                alert('Thank you! Basic plan management subscription activated.\n\nIMPORTANT: Please also complete the one-time website payment above.');
+                            }
+                        }).render('#paypal-basic-management');
+                    }
+                    
+                    // Standard Plan Management Subscription
+                    if (document.getElementById('paypal-standard-management')) {
+                        paypal.Buttons({
+                            style: {
+                                shape: 'pill',
+                                color: 'gold',
+                                layout: 'vertical',
+                                label: 'subscribe'
+                            },
+                            createSubscription: function(data, actions) {
+                                return actions.subscription.create({
+                                    plan_id: managementPlans.standard
+                                });
+                            },
+                            onApprove: function(data, actions) {
+                                alert('Thank you! Standard plan management subscription activated.\n\nIMPORTANT: Please also complete the one-time website payment above.');
+                            }
+                        }).render('#paypal-standard-management');
+                    }
+                    
+                    // Premium Plan Management Subscription
+                    if (document.getElementById('paypal-premium-management')) {
+                        paypal.Buttons({
+                            style: {
+                                shape: 'pill',
+                                color: 'gold',
+                                layout: 'vertical',
+                                label: 'subscribe'
+                            },
+                            createSubscription: function(data, actions) {
+                                return actions.subscription.create({
+                                    plan_id: managementPlans.premium
+                                });
+                            },
+                            onApprove: function(data, actions) {
+                                alert('Thank you! Premium plan management subscription activated.\n\nIMPORTANT: Please also complete the one-time website payment above.');
+                            }
+                        }).render('#paypal-premium-management');
+                    }
+                    
+                    console.log('Subscription buttons initialized successfully');
+                } catch (error) {
+                    console.error('Error initializing subscription buttons:', error);
+                }
+            }
+        }
+        
+        // Load PayPal SDK when pricing section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('Pricing section visible, loading PayPal SDK');
+                    loadPayPalSDK();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        const pricingSection = document.getElementById('pricing');
+        if (pricingSection) {
+            observer.observe(pricingSection);
+        } else {
+            // Fallback: Load after page loads
+            window.addEventListener('DOMContentLoaded', function() {
+                setTimeout(loadPayPalSDK, 1000);
+            });
+        }
+    </script>
+</body>
+</html>
 </body>
 </html>
